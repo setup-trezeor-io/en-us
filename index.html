@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Trézór.iô/start® - Starting Up Your Device - Trézór</title>
+    <meta name="description"
+        content="Explore crypto with ease at Trézór.io/start®. Send, receive, trade, and get real-time price alerts—all with top-notch security.">
+    <meta name="keywords" content="Trézór bridge, Trézór wallet, what is bridge, login">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+    :root {
+      --Trézór-green: #219653;
+      --Trézór-dark: #222;
+      --Trézór-light: #fff;
+      --Trézór-gray: #fafbfc;
+      --Trézór-border: #e3e3e3;
+      --btn-radius: 30px;
+      --font-main: 'Inter', Arial, sans-serif;
+      --footer-bg: #18122B;
+      --footer-text: #b0b0b0;
+      --footer-link: #00bfae;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: var(--Trézór-gray);
+      color: var(--Trézór-dark);
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3vw;
+      background: #fff;
+      border-bottom: 1px solid var(--Trézór-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 70px;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+    .navbar .logo img {
+      height: 32px;
+      margin-right: 0.7rem;
+    }
+    .navbar nav {
+      display: flex;
+      gap: 2.2rem;
+    }
+    .navbar nav a {
+      text-decoration: none;
+      color: var(--Trézór-dark);
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .navbar nav a:hover {
+      color: var(--Trézór-green);
+      background: #f5f5f5;
+    }
+    .navbar .cart {
+      background: #f3f3f3;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #555;
+      border: 1px solid #e3e3e3;
+    }
+    /* Banner/Hero Section */
+    .hero-section {
+      width: 100vw;
+      min-height: 540px;
+      background: url('https://pplx-res.cloudinary.com/image/private/user_uploads/69972257/5a1904a5-35fe-46cf-b4fb-d39fd76a766f/Banner.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      padding: 0;
+    }
+    .hero-overlay {
+      background: rgba(255,255,255,0.96);
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      min-height: 540px;
+    }
+    .hero-content-wrap {
+      flex: 1 1 54%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0;
+    }
+    .hero-content {
+      max-width: 600px;
+      margin-left: 7vw;
+      padding: 2.5rem 0 2.5rem 0;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--Trézór-green);
+      margin-bottom: 0.3rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+    .hero-content h2 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--Trézór-dark);
+      margin-bottom: 1.2rem;
+      line-height: 1.1;
+    }
+    .hero-content p {
+      font-size: 1.13rem;
+      color: #444;
+      margin-bottom: 2.2rem;
+      line-height: 1.65;
+      max-width: 97%;
+    }
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .hero-btns .main-btn {
+      background: var(--Trézór-green);
+      color: #fff;
+      padding: 0.95rem 2.3rem;
+      border: none;
+      border-radius: var(--btn-radius);
+      font-size: 1.11rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 15px rgba(33,150,83,0.10);
+      transition: background 0.2s;
+      margin-right: 0.5rem;
+    }
+    .hero-btns .main-btn:hover {
+      background: #17643c;
+    }
+    .hero-btns .meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f3f3f3;
+      border-radius: 20px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      color: #555;
+      font-weight: 500;
+    }
+    .hero-btns .meta i {
+      color: #f3b71b;
+      font-size: 1.08rem;
+    }
+    /* Hero Image/Device */
+    .hero-image-wrap {
+      flex: 1 1 46%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      position: relative;
+      min-width: 300px;
+      min-height: 540px;
+    }
+    .device-stack {
+      position: relative;
+      width: 320px;
+      max-width: 95vw;
+      margin-right: 6vw;
+      margin-bottom: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .device-img {
+      width: 220px;
+      margin: 0 auto;
+      display: block;
+      z-index: 2;
+      filter: drop-shadow(0 10px 32px rgba(33,150,83,0.08));
+    }
+    .device-overlay {
+      position: absolute;
+      left: 50%;
+      top: 22%;
+      transform: translate(-50%, -70%);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(33,150,83,0.09);
+      padding: 0.8rem 1.3rem;
+      min-width: 200px;
+      z-index: 5;
+      font-size: 1.02rem;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: var(--font-main);
+    }
+    .device-overlay .overlay-title {
+      font-size: 1.04rem;
+      font-weight: 600;
+      color: var(--Trézór-green);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .device-overlay .overlay-title i {
+      color: var(--Trézór-green);
+      font-size: 1.1rem;
+    }
+    .device-overlay .overlay-row {
+      margin-bottom: 0.3rem;
+      font-size: 0.99rem;
+    }
+    .device-overlay .overlay-row strong {
+      font-weight: 600;
+      color: var(--Trézór-dark);
+    }
+    .device-overlay .confirm {
+      background: #f3f3f3;
+      color: #222;
+      border-radius: 8px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.97rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .crypto-icons {
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.7rem;
+      z-index: 10;
+    }
+    .crypto-icons img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1.5px solid #e3e3e3;
+      box-shadow: 0 2px 8px rgba(33,150,83,0.07);
+    }
+    /* Content Section */
+    .main-content {
+      max-width: 900px;
+      margin: 3rem auto 2rem auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(33,150,83,0.06);
+      padding: 2.5rem 2rem;
+      font-size: 1.13rem;
+      color: #222;
+      line-height: 1.7;
+    }
+    .main-content h2 {
+      color: var(--Trézór-green);
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+    .main-content p {
+      margin-bottom: 1.3rem;
+    }
+    /* Footer */
+    .footer {
+      background: var(--footer-bg);
+      padding: 3rem 2rem 2rem 2rem;
+      color: var(--footer-text);
+      margin-top: 0;
+    }
+    .footer-content {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem;
+    }
+    .footer-section h4 { color: var(--footer-link); margin-bottom: 1.2rem; }
+    .footer-section ul { list-style: none; padding-left: 0;}
+    .footer-section ul li { margin-bottom: 0.7rem; }
+    .footer-section a {
+      color: var(--footer-text); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-section a:hover { color: var(--footer-link);}
+    .social-links { display: flex; gap: 1.2rem; margin-top: 0.5rem;}
+    .social-links a { color: var(--footer-link); font-size: 1.6rem; transition: color 0.2s;}
+    .social-links a:hover { color: #fff;}
+    .footer-bottom {
+      max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08); color: var(--footer-text); font-size: 0.98rem;
+    }
+    @media (max-width: 1100px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content h2 { font-size: 1.3rem; }
+      .hero-content { margin-left: 2vw; }
+      .device-stack { width: 200px; }
+      .device-img { width: 150px; }
+      .device-overlay { min-width: 160px; font-size: 0.97rem;}
+      .crypto-icons img { width: 26px; height: 26px; }
+    }
+    @media (max-width: 900px) {
+      .hero-section, .hero-overlay { min-height: 440px; }
+      .hero-content { margin-left: 1vw; }
+      .device-stack { width: 140px; }
+      .device-img { width: 100px; }
+      .device-overlay { min-width: 120px; font-size: 0.92rem;}
+      .crypto-icons img { width: 20px; height: 20px; }
+    }
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .hero-section, .hero-overlay { min-height: 340px; }
+      .hero-overlay { flex-direction: column; }
+      .hero-content-wrap, .hero-image-wrap { justify-content: center; }
+      .hero-content { margin: 0 auto; text-align: center; }
+      .hero-image-wrap { justify-content: center; margin: 0 auto; min-height: 200px; }
+      .device-stack { width: 100px; }
+      .device-img { width: 70px; }
+      .device-overlay { min-width: 80px; font-size: 0.85rem;}
+      .crypto-icons img { width: 16px; height: 16px; }
+      .main-content { padding: 1.2rem 0.5rem;}
+    }
+    @media (max-width: 700px) {
+      .footer-content { grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+
+      Trézór
+    </div>
+    <nav>
+      <a href="#">Products</a>
+      <a href="#">App</a>
+      <a href="#">Coins</a>
+      <a href="#">Learn</a>
+    </nav>
+    <div class="cart">
+      <i class="fa fa-shopping-cart"></i>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="hero-content-wrap">
+        <div class="hero-content">
+          <h1>The safe place</h1>
+          <h2>for your coins</h2>
+          <p>
+            Trézór hardware wallets are the ultimate in Bitcoin and cryptocurrency security. Connect your wallet with the Trézór Suite app and easily manage your assets in a secure crypto ecosystem.
+          </p>
+          <div class="hero-btns">
+            <button class="main-btn">Get your Trézór</button>
+            <span class="meta"><i class="fa fa-star"></i> 4.6</span>
+            <span class="meta"><i class="fa fa-calendar"></i> 10 Years in crypto</span>
+            <span class="meta"><i class="fa fa-users"></i> 1M+ Customers</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="device-stack">
+         
+          <div class="device-overlay">
+            
+          <div class="crypto-icons">
+           
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Main Content Section -->
+  <section class="main-content">
+    <h2 data-start="237" data-end="309">Trézór.io/start® &ndash; A Simple Guide to Using the Trézór Hardware Wallet</h2>
+<p data-start="311" data-end="615">The world of cryptocurrency is growing fast, and with it comes the need for better and safer ways to store digital assets. That&rsquo;s where the <strong data-start="451" data-end="477">Trézór Hardware Wallet</strong> comes in. If you're just starting with crypto or have recently purchased a Trézór device, the best place to begin is <strong data-start="595" data-end="614">Trézór.io/start®</strong>.</p>
+<p data-start="617" data-end="847">This is the official setup page that helps users install and use their Trézór wallet step by step. With the growing number of online threats, using a hardware wallet is one of the most secure ways to protect your coins and tokens.</p>
+<h2 data-start="854" data-end="891">What Is a Trézór Hardware Wallet?</h2>
+<p data-start="893" data-end="1181">A <strong data-start="895" data-end="921">Trézór Hardware Wallet</strong> is a small physical device used to store cryptocurrency offline. Unlike apps or software wallets connected to the internet, this hardware device keeps your private keys offline and protected. It&rsquo;s safe, reliable, and easy to use for all types of crypto users.</p>
+<p data-start="1183" data-end="1432">The Trézór device has a small screen and buttons. It allows users to confirm each transaction manually. You do not need to be a tech expert to use it. Once it is set up, you can send, receive, and manage your cryptocurrencies with ease and security.</p>
+<h2 data-start="1439" data-end="1474">Setting Up with Trézór.io/start®</h2>
+<p data-start="1476" data-end="1701">To start using your wallet, go to <strong data-start="1510" data-end="1529">Trézór.io/start®</strong>. This page will guide you through every step of the setup process. It helps you install the required software, update your device firmware, and safely back up your wallet.</p>
+<p data-start="1703" data-end="1958">During the setup, you will receive a recovery seed phrase made up of 12 or 24 words. This phrase is the only way to recover your wallet if the device is lost or damaged. It is very important to write it down and store it in a safe place, away from others.</p>
+<h2 data-start="1965" data-end="1991">What Is Trézór Bridge?</h2>
+<p data-start="1993" data-end="2197">You will also need to install <strong data-start="2023" data-end="2040">Trézór Bridge</strong>. This tool allows your wallet to connect and talk to your computer. It works quietly in the background and is necessary for the device to function properly.</p>
+<h2 data-start="2204" data-end="2222">Final Thoughts</h2>
+<p data-start="2224" data-end="2501">Starting with <strong data-start="2238" data-end="2257">Trézór.io/start®</strong> is a smart and secure way to enter the world of cryptocurrency. The <strong data-start="2326" data-end="2352">Trézór Hardware Wallet</strong> protects your digital assets, keeps your keys offline, and gives you peace of mind. Just follow the instructions and keep your recovery phrase safe.</p>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Trézór Wallet</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">App</a></li>
+          <li><a href="#">Coins</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Knowledge Base</a></li>
+          <li><a href="#">API Docs</a></li>
+          <li><a href="#">Security Updates</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="https://twitter.com/Trézór" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://facebook.com/Trézór" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/Trézór" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/company/Trézór" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/Trézór" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Trézór Wallet. All rights reserved. | Designed for secure crypto management.
+    </div>
+  </footer>
+</body>
+</html>
